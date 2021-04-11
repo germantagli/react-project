@@ -1,3 +1,5 @@
+import ButtonComponent from "./components/shared-components/button-component/button-component"
+
 export const ARRAY_COLUMS_USER_TABLE = [
     {
         label: "id",
@@ -14,15 +16,26 @@ export const ARRAY_COLUMS_USER_TABLE = [
       prop: "name"
     },
     {
+      label: "Username",
+      prop: "username"
+    },
+    {
         label: "Phone",
         prop: "phone"
     },
     {
-        label: "Username",
-        prop: "username"
-    },
-    {
         label: "Website",
         prop: "website"
-    }, 
+    },
+    {
+      label: "Operations",
+      render: function() {
+        return (
+          <span>
+           <ButtonComponent plain={true} type="info" size="small" label="Edit" />
+           <ButtonComponent type="danger" size="small" label="Delete" />
+          </span>
+        )
+      }
+    } 
   ]
