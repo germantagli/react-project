@@ -11,7 +11,7 @@ const TabletComponent = (props, context) => {
     *@prop {string}  emptyText  -> Displayed text when data is empty. You can customize this area with slot="empty"
   **/
 
-  const { data , columns, emptyText } = props;
+  const { data , columns, emptyText="not data" } = props;
   
   return (
     <Table
