@@ -24,16 +24,19 @@ const reducerUser = (state = initialState, action) => {
     }
 
     if (action.type === SUCCES_EDIT_USER){
+        const index = state.users.findIndex(e => e !== action.user); //finding index of the item                                                    
+        const newArray = [...state.users]; //making a new array
+        newArray[index] = action.user//changing value in the new array
         return {
             ...state,
-            users : state.users.concat(action.user)
+            users : newArray
         }
     }
 
     if (action.type === SUCCESS_GET_USERS){
         return {
             ...state,
-            users : state.users.concat(action.users)
+            users : [...action.users]
         }
     }
 

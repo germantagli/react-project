@@ -1,5 +1,5 @@
 import { put, call, takeLatest } from "redux-saga/effects";
-import { ADD_USER, ERROR_ADD_USER, ERROR_GET_USERS, GET_USERS, SUCCESS_ADD_USER, SUCCESS_GET_USERS } from "../actions/user";
+import { ADD_USER, EDIT_USER, ERROR_ADD_USER, ERROR_EDIT_USER, ERROR_GET_USERS, GET_USERS, SUCCESS_ADD_USER, SUCCESS_GET_USERS, SUCCES_EDIT_USER } from "../actions/user";
 import { apiCall } from "../api";
 const urlGetUser = "https://jsonplaceholder.typicode.com/users";
 
@@ -30,11 +30,12 @@ function* deleteUsers({ payload }) {
     }
 }
 
-function* editUsers({ payload }) {
+function* editUser(payload) {
     try {
-        
+        const result = yield call(apiCall, 'post', urlGetUser, JSON.stringify(payload))
+        yield put({ type: SUCCES_EDIT_USER, user: result});
     } catch (error) {
-        
+        yield put({ type: ERROR_EDIT_USER,  error});
     }
 }
 
@@ -42,6 +43,6 @@ function* editUsers({ payload }) {
 export default function* users() {
     yield takeLatest(GET_USERS, getUsers);
     yield takeLatest(ADD_USER, addUsers);
-    // yield takeLatest(ACTION_NAME, deleteUsers);
+    yield takeLatest(EDIT_USER, editUser);
     // yield takeLatest(ACTION_NAME, editUsers);
 }

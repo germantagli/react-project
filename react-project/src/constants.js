@@ -1,3 +1,4 @@
+import { Tag } from "element-react/next"
 import ButtonComponent from "./components/shared-components/button-component/button-component"
 
 export const ARRAY_COLUMS_USER_TABLE = [
@@ -13,7 +14,10 @@ export const ARRAY_COLUMS_USER_TABLE = [
     },
     {
       label: "Name",
-      prop: "name"
+      prop: "name",
+      render: function(data){
+        return <Tag>{data.name}</Tag>
+      }
     },
     {
       label: "Username",
@@ -26,16 +30,5 @@ export const ARRAY_COLUMS_USER_TABLE = [
     {
         label: "Website",
         prop: "website"
-    },
-    {
-      label: "Operations",
-      render: function() {
-        return (
-          <span>
-           <ButtonComponent plain={true} type="info" size="small" label="Edit" />
-           <ButtonComponent type="danger" size="small" label="Delete" />
-          </span>
-        )
-      }
-    } 
+    }
   ]
