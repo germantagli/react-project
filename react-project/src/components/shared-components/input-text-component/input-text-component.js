@@ -10,9 +10,10 @@ const InputTextComponent = (props, context) => {
     *@prop {Boolean}        disabled     -> Whether Input is disabled
     *@prop {function}       change       -> Function that is called when the value of the component changes
     *@prop {string/number}  value        -> Binding value
+    *@prop {string/number}  label        -> label
   **/
 
-  const { placeholder, disabled, change, value } = props;
+  const { placeholder, disabled, change, value, label } = props;
   
   /** handleChange : manage component changes
     *@param {string/number}  event  -> new value
@@ -24,12 +25,16 @@ const InputTextComponent = (props, context) => {
   };
 
   return (
-    <Input 
+    <div>
+      <label>{label}</label>
+      <Input 
       value={value} 
       placeholder={placeholder} 
       disabled={disabled} 
       onChange={handleChange} 
     />
+    </div>
+
   );
 
 };
