@@ -17,10 +17,11 @@ const reducerUser = (state = initialState, action) => {
     }
 
     if (action.type === SUCCESS_DElETE_USER){
-        return {
+
+        return {  
             ...state,
-            users : state.users.concat(action.user)
-        }
+            users: state.users.filter(e => e.id !== Number(action.user))                     
+          }
     }
 
     if (action.type === SUCCES_EDIT_USER){

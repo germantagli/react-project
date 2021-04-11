@@ -3,12 +3,12 @@ import "./user-page.scss"
 import 'element-theme-default';
 import { connect } from "react-redux";
 import ButtonComponent from '../../components/shared-components/button-component/button-component';
-import { startGetUsers, startAddUsers, startEditUsers } from '../../redux/actions/user';
+import { startGetUsers, startAddUsers, startEditUsers, startDeleteUsers } from '../../redux/actions/user';
 import UserTableComponent from '../../components/user-components/user-table-component/user-table-component';
 import UserAddComponent from '../../components/user-components/user-add-component/user-add-component';
 import { Popover, Tag } from 'element-react/next';
 
-const UserPage = ({editUserCall, addUser, getUsers, users}) => {
+const UserPage = ({editUserCall, addUser, getUsers, users, deleteUserCall}) => {
 
   useEffect(() => {
     let mounted = true;
@@ -74,8 +74,8 @@ const UserPage = ({editUserCall, addUser, getUsers, users}) => {
   }
 
   const deleteUser = (data) => {
-    setVisible(false);
-    console.log(data);
+    console.log("DELETE");
+    deleteUserCall(data);
   }
 
   return (
@@ -118,6 +118,10 @@ const mapDispatchToProps = dispatch => ({
   editUserCall(user){
     console.log(user)
     dispatch(startEditUsers(user))
+  },
+  deleteUserCall(user){
+    console.log(user)
+    dispatch(startDeleteUsers(user))
   },
   getUsers(){
     dispatch(startGetUsers())

@@ -1,8 +1,3 @@
-
-export const DElETE_USER ="DElETE_USER";
-export const SUCCESS_DElETE_USER ="SUCCESS_DElETE_USER";
-export const ERROR_DElETE_USER ="ERROR_DElETE_USER";
-
 //GET USERS
 export const GET_USERS ="GET_USERS";
 export const SUCCESS_GET_USERS ="SUCCESS_GET_USERS";
@@ -60,5 +55,26 @@ export const successEditUsers = payload => ({
 
 export const errorEditUsers = payload => ({
     type: ERROR_EDIT_USER,
+    ...payload
+})
+
+//DELETE USER
+
+export const DElETE_USER ="DElETE_USER";
+export const SUCCESS_DElETE_USER ="SUCCESS_DElETE_USER";
+export const ERROR_DElETE_USER ="ERROR_DElETE_USER";
+
+export const startDeleteUsers = payload => ({
+    type: DElETE_USER,
+    ...payload
+})
+
+export const successDeleteUsers = payload => ({
+    type: SUCCESS_DElETE_USER,
+    ...payload
+})
+
+export const errorDeleteUsers = payload => ({
+    type: ERROR_DElETE_USER,
     ...payload
 })
