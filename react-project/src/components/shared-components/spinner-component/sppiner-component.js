@@ -1,15 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { Loading } from 'element-react/next';
 import "./sppiner-component.scss"
+import 'element-theme-default';
 
 const SpinnerComponent = (props, context) => {
+  
+  /** Component created to share it with the rest of the application renders a loading based on the properties that are passed
+    *@prop {boolean}   text       -> Loading text that displays under the spinner default  "Loading..."
+    *@prop {boolean}   fullscreen -> Same as the fullscreen modifier of v-loading default  true
+    *@prop {boolean}   loading    -> Control the loading state default  false
+  **/
+
+  const { text = "Loading..." , fullscreen = true, loading = false} = props;
+  
   return (
-    <div>
-        <h1>Spinner Component</h1>
-    </div>
+    <Loading text={text} fullscreen={fullscreen} loading={loading}></Loading>
   );
 };
 
 export default SpinnerComponent;
 
-SpinnerComponent.propTypes = {};
