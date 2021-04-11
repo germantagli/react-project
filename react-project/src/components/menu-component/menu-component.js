@@ -26,12 +26,12 @@ const MenuComponent = (props, context) => {
           </Menu.SubMenu>
         {/* MENU MOBILE */}
 
-        <Menu.SubMenu index="6" style={{float: "right"}} title={<span><i class="el-icon-message"></i></span>}>
+        <Menu.SubMenu index="6" style={{float: "right"}} title={<span><i className="el-icon-message"></i></span>}>
           <Menu.Item index="6-1"><span>no message to read</span></Menu.Item>
         </Menu.SubMenu>
 
         <Menu.SubMenu index="7" style={{float: "right"}} title={<span><i className="el-icon-setting"></i>Config</span>}>
-            <Menu.Item index="7-1"><i class="el-icon-edit"></i> Change Lingua</Menu.Item>
+            <Menu.Item index="7-1"><i className="el-icon-edit"></i> Change Lingua</Menu.Item>
             <Menu.Item index="7-2">Logout</Menu.Item>
         </Menu.SubMenu>
 

@@ -14,7 +14,7 @@ function* getUsers({ payload }) {
 
 function* addUsers( payload ) {
     try {
-        const result = yield call(apiCall, 'post', apiUser, JSON.stringify(payload))
+        const result = yield call(apiCall, 'post', apiUser, JSON.stringify(payload), true)
         yield put({ type: SUCCESS_ADD_USER, user: result});
     } catch (error) {
         yield put({ type: ERROR_ADD_USER,  error});
@@ -23,7 +23,7 @@ function* addUsers( payload ) {
 
 function* deleteUser( payload ) {
     try {
-        yield call(apiCall, 'delete', apiUser + `/${payload.id}`)
+        yield call(apiCall, 'delete', apiUser + `/${payload.id}`, null, true)
         yield put({ type: SUCCESS_DElETE_USER, user: `${payload.id}`});
     } catch (error) {
         yield put({ type: ERROR_DElETE_USER,  error});
@@ -32,7 +32,7 @@ function* deleteUser( payload ) {
 
 function* editUser(payload) {
     try {
-        const result = yield call(apiCall, 'post', apiUser, JSON.stringify(payload))
+        const result = yield call(apiCall, 'post', apiUser, JSON.stringify(payload), true)
         yield put({ type: SUCCES_EDIT_USER, user: result});
     } catch (error) {
         yield put({ type: ERROR_EDIT_USER,  error});

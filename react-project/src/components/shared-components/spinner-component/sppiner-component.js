@@ -11,7 +11,7 @@ const SpinnerComponent = (props, context) => {
     *@prop {boolean}   loading    -> Control the loading state default  false
   **/
 
-  const { text = "Loading..." , fullscreen = true, loading = false} = props;
+  const { text = "Loading..." , fullscreen = false, loading = false} = props;
   
   return (
     <Loading text={text} fullscreen={fullscreen} loading={loading}></Loading>

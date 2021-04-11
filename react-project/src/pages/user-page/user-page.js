@@ -7,8 +7,9 @@ import { startGetUsers, startAddUsers, startEditUsers, startDeleteUsers } from '
 import UserTableComponent from '../../components/user-components/user-table-component/user-table-component';
 import UserAddComponent from '../../components/user-components/user-add-component/user-add-component';
 import { Tag } from 'element-react/next';
+import SpinnerComponent from '../../components/shared-components/spinner-component/sppiner-component';
 
-const UserPage = ({editUserCall, addUser, getUsers, users, deleteUserCall}) => {
+const UserPage = ({editUserCall, addUser, getUsers, users, deleteUserCall, loading}) => {
 
   useEffect(() => {
     getUsers()
@@ -76,8 +77,10 @@ const UserPage = ({editUserCall, addUser, getUsers, users, deleteUserCall}) => {
 
   return (
     <div>
+      
+      <SpinnerComponent fullscreen = {loading} loading={loading}/>
       <div className="d-flex justify-content-between">
-        <h2>User Management</h2>
+        <h2>User Management </h2>
         <div>
           <ButtonComponent 
             disabled={!user.email && !user.name && !user.username && !user.phone && !user.website  } 
@@ -105,6 +108,7 @@ const UserPage = ({editUserCall, addUser, getUsers, users, deleteUserCall}) => {
 
 const mapStateProps = state => ({
   users: state.users || [],
+  loading : state.loading 
 })
 
 const mapDispatchToProps = dispatch => ({
