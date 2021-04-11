@@ -9,16 +9,18 @@ import HomePage from './pages/home-page/home-page';
 import UserPage from './pages/user-page/user-page';
 import AboutPage from './pages/about-page/about-page';
 import ContactPage from './pages/contact-page/contact-page';
+import {Provider} from "react-redux"
+import store from './redux/store/index';
 
 function App() {
   return (
-    <div>
-    <div className="App">
-      <div className="header-app">
-        <MenuComponent />
-      </div>
-      <div className="body-app">
-        <Switch>
+    <Provider store={store()}>
+      <div className="App">
+        <div className="header-app">
+          <MenuComponent />
+        </div>
+        <div className="body-app">
+          <Switch>
             <Route path="/about">
               <AboutPage />
             </Route>
@@ -32,9 +34,9 @@ function App() {
               <HomePage />
             </Route>
           </Switch>
+        </div>
       </div>
-      </div>
-    </div>
+    </Provider>
   );
 }
 
