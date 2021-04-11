@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useCallback} from 'react';
 import "./user-page.scss"
 import 'element-theme-default';
 import { connect } from "react-redux";
@@ -6,15 +6,13 @@ import ButtonComponent from '../../components/shared-components/button-component
 import { startGetUsers, startAddUsers, startEditUsers, startDeleteUsers } from '../../redux/actions/user';
 import UserTableComponent from '../../components/user-components/user-table-component/user-table-component';
 import UserAddComponent from '../../components/user-components/user-add-component/user-add-component';
-import { Popover, Tag } from 'element-react/next';
+import { Tag } from 'element-react/next';
 
 const UserPage = ({editUserCall, addUser, getUsers, users, deleteUserCall}) => {
 
   useEffect(() => {
-    let mounted = true;
-    if(!users.length) {getUsers()} 
-    return () => mounted = false;
-  }, [])
+    getUsers()
+  }, []);
 
   const ARRAY_COLUMS_USER_TABLE = [
     {
@@ -58,10 +56,9 @@ const UserPage = ({editUserCall, addUser, getUsers, users, deleteUserCall}) => {
       }
     }
   ]
-
   const [user, setUser] = useState({email:"",name:"",  username:"", phone:"", website:""});
   const [modeComponent, setModeComponent] = useState("ADD");
-  const [visible, setVisible] = useState(false);
+
   
   const cancellForm = () => {
     setUser({email:"",name:"",  username:"", phone:"", website:""});
@@ -74,7 +71,6 @@ const UserPage = ({editUserCall, addUser, getUsers, users, deleteUserCall}) => {
   }
 
   const deleteUser = (data) => {
-    console.log("DELETE");
     deleteUserCall(data);
   }
 
@@ -116,11 +112,9 @@ const mapDispatchToProps = dispatch => ({
     dispatch(startAddUsers(user))
   },
   editUserCall(user){
-    console.log(user)
     dispatch(startEditUsers(user))
   },
   deleteUserCall(user){
-    console.log(user)
     dispatch(startDeleteUsers(user))
   },
   getUsers(){

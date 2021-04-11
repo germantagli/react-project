@@ -13,7 +13,6 @@ function* getUsers({ payload }) {
 }
 
 function* addUsers( payload ) {
-    console.log(payload)
     try {
         const result = yield call(apiCall, 'post', apiUser, JSON.stringify(payload))
         yield put({ type: SUCCESS_ADD_USER, user: result});
@@ -24,9 +23,7 @@ function* addUsers( payload ) {
 
 function* deleteUser( payload ) {
     try {
-        console.log("SAGA")
-        console.log(payload);
-        const result = yield call(apiCall, 'delete', apiUser + `/${payload.id}`)
+        yield call(apiCall, 'delete', apiUser + `/${payload.id}`)
         yield put({ type: SUCCESS_DElETE_USER, user: `${payload.id}`});
     } catch (error) {
         yield put({ type: ERROR_DElETE_USER,  error});
