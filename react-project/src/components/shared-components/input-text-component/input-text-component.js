@@ -1,6 +1,6 @@
 import React from 'react';
-import "./input-text-component.scss"
 import { Input } from 'element-react/next';
+import "./input-text-component.scss"
 import 'element-theme-default';
 
 const InputTextComponent = (props, context) => {
