@@ -1,11 +1,14 @@
 import React from 'react';
 import "./contact-page.scss"
 import 'element-theme-default';
+import img404 from '../../error.png'; 
 
 const ContactPage = (props, context) => {
 
   return (
-    <h1>Contact Page</h1>
+    <div className="text-center mt-5">
+      <img src={img404} alt="" />
+    </div>
   );
   
 };

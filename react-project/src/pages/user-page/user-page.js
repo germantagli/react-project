@@ -6,7 +6,7 @@ import ButtonComponent from '../../components/shared-components/button-component
 import { startGetUsers, startAddUsers, startEditUsers, startDeleteUsers } from '../../redux/actions/user';
 import UserTableComponent from '../../components/user-components/user-table-component/user-table-component';
 import UserAddComponent from '../../components/user-components/user-add-component/user-add-component';
-import { Tag } from 'element-react/next';
+import { MessageBox, Tag } from 'element-react/next';
 import SpinnerComponent from '../../components/shared-components/spinner-component/sppiner-component';
 
 const UserPage = ({editUserCall, addUser, getUsers, users, deleteUserCall, loading}) => {
@@ -19,34 +19,40 @@ const UserPage = ({editUserCall, addUser, getUsers, users, deleteUserCall, loadi
     {
       label: "id",
       prop: "id",
-      width: 60
+      width: 100
     },
     {
       label: "Email",
       prop: "email",
-      width: 180
+      width: 500
     },
     {
       label: "Name",
-      prop: "name"
+      prop: "name",
+      width: 500
     },
     {
       label: "Username",
       prop: "username",
+      width: 300,
       render: function (data) {
         return <Tag>{data.username}</Tag>
       }
     },
     {
       label: "Phone",
-      prop: "phone"
+      prop: "phone",
+      width: 300,
     },
     {
       label: "Website",
-      prop: "website"
+      prop: "website",
+      width: 300,
     },
     {
       label: "Operations",
+      fixed: 'right',
+      width: 200,
       render: function (data) {
         return (
           <span>
@@ -72,12 +78,24 @@ const UserPage = ({editUserCall, addUser, getUsers, users, deleteUserCall, loadi
   }
 
   const deleteUser = (data) => {
-    deleteUserCall(data);
+    MessageBox.confirm('You confirm to delete', 'Warning', {
+      confirmButtonText: 'OK',
+      cancelButtonText: 'Cancel',
+      type: 'warning'
+    }).then(() => {
+      deleteUserCall(data);
+    }).catch(() => {
+      //cancel action
+    });
+  }
+
+  const handlerAddUser = (user) => {
+    addUser(user)
+    setUser({email:"",name:"",  username:"", phone:"", website:""});
   }
 
   return (
     <div>
-      
       <SpinnerComponent fullscreen = {loading} loading={loading}/>
       <div className="d-flex justify-content-between">
         <h2>User Management </h2>
@@ -95,7 +113,7 @@ const UserPage = ({editUserCall, addUser, getUsers, users, deleteUserCall, loadi
             icon= {modeComponent === "ADD" ? "plus" : "edit"} 
             label={modeComponent === "ADD" ? "ADD USER" : "EDIT USER"} 
             type="success"  
-            functionClick = {modeComponent === "ADD" ? () => addUser(user): () => editUserCall(user)}   
+            functionClick = {modeComponent === "ADD" ? () => handlerAddUser(user): () => editUserCall(user)}   
           />
 
         </div>

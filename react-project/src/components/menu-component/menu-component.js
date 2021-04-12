@@ -8,13 +8,13 @@ const MenuComponent = (props, context) => {
 
   return (
     <div>
-      <Menu theme="dark" defaultActive="1" className="el-menu-demo" mode="horizontal">
+      <Menu theme="dark" defaultActive="2" className="el-menu-demo" mode="horizontal">
 
         {/* MENU DESTOKP */}
-          <Menu.Item index="1" className="d-none d-sm-none d-md-block"><Link to="/">Home</Link></Menu.Item>
-          <Menu.Item index="2" className="d-none d-sm-none d-md-block"><Link to="/user">User</Link></Menu.Item>
-          <Menu.Item index="3" className="d-none d-sm-none d-md-block"><Link to="/contact">Contact</Link></Menu.Item>
-          <Menu.Item index="4" className="d-none d-sm-none d-md-block"><Link to="/about">About</Link></Menu.Item>
+          <Link to="/"><Menu.Item index="1" className="d-none d-sm-none d-md-block">Home</Menu.Item></Link>
+          <Link to="/user"><Menu.Item index="2" className="d-none d-sm-none d-md-block">User</Menu.Item></Link>
+          <Link to="/contact"><Menu.Item index="3" className="d-none d-sm-none d-md-block">Contact</Menu.Item></Link>
+          <Link to="/about"><Menu.Item index="4" className="d-none d-sm-none d-md-block">About</Menu.Item></Link>
         {/* MENU DESTOKP */}
         
         {/* MENU MOBILE */}
@@ -31,7 +31,7 @@ const MenuComponent = (props, context) => {
         </Menu.SubMenu>
 
         <Menu.SubMenu index="7" style={{float: "right"}} title={<span><i className="el-icon-setting"></i>Config</span>}>
-            <Menu.Item index="7-1"><i className="el-icon-edit"></i> Change Lingua</Menu.Item>
+            <Menu.Item index="7-1"><i className="el-icon-edit"></i> Change language</Menu.Item>
             <Menu.Item index="7-2">Logout</Menu.Item>
         </Menu.SubMenu>
 
