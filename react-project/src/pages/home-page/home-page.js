@@ -15,7 +15,7 @@ const HomePage = (props, context) => {
         <Alert
           title="Informazione"
           type="info"
-          description="In questa primera versione de la aplicazione, potrai fare : Inserimento, Modifica, Cancellazione e Visualizazione della lista de tutti gli User "
+          description="In questa prima versione, potrai fare : Inserimento, Modifica, Cancellazione e Visualizazione della lista de tutti gli User "
           showIcon={true} />
       </Col>
       
